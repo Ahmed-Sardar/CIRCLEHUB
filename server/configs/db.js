@@ -1,10 +1,13 @@
 import mongoose from "mongoose";
 
-const connectDB = async () => {
-    try {
-        mongoose.connection.on('connected', ()=> console.log('Database connected'))
-        await mongoose.connect(`${process.env.MONGODB_URL}/CircleHub`)
-    } catch (error) {
+const connectDB = async () => 
+{
+    try 
+    {
+        await mongoose.connect(process.env.MONGODB_URL)
+        return console.log("MongoDB connected")
+    } catch (error) 
+    {
         console.log(error.message)
     }
 }
