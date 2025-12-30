@@ -1,6 +1,16 @@
+// import connectDB from "../configs/db.js";
 import { Inngest } from "inngest";
 import User from "../models/User.js";
+import "dotenv/config";
+import connectDB from "../configs/db.js";
+import mongoose from "mongoose";
 
+await connectDB();
+
+await mongoose.connect(process.env.MONGO_URI, {
+  dbName: "circlehub",
+});
+// await connectDB();
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "circlehub-app" });
 
